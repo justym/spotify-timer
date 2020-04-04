@@ -15,6 +15,6 @@ func main() {
 	http.HandleFunc("/", controller.Home)
 	http.HandleFunc("/auth", controller.Authorize)
 	http.ListenAndServe(port, nil)
-)
+}
 
 
