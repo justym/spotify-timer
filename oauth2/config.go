@@ -19,7 +19,8 @@ var (
 		},
 	}
 
-	client = make(chan *http.Client)
+	AccessToken = ""
+	Ch          = make(chan *http.Client)
 )
 
 const (
@@ -35,5 +36,5 @@ func GetToken(code string) (*oauth2.Token, error) {
 
 //GetRedirectURL return Auth Code URL
 func GetRedirectURL() string {
-	return Config.AuthCodeURL("state", oauth2.AccessTypeOffline)
+	return Config.AuthCodeURL("state")
 }
