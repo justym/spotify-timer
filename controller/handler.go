@@ -28,7 +28,7 @@ func Authorize(w http.ResponseWriter, r *http.Request) {
 
 //Home is http handler for Home
 func Home(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "Home Handler")
 	w.WriteHeader(http.StatusOK)
+	fmt.Fprintf(w, "Home Handler")
 	log.Println("Got Request for /")
 }
