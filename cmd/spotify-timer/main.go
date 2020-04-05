@@ -6,18 +6,23 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/justym/spotify-timer/controller"
-	o "github.com/justym/spotify-timer/oauth2"
-	"github.com/justym/spotify-timer/player"
+	"github.com/justym/spotify-timer/cmd/spotify-timer/server"
+	o "github.com/justym/spotify-timer/lib/oauth2"
+	"github.com/justym/spotify-timer/lib/player"
 )
 
-func main() {
-	var port string
+var port string
+
+func init() {
 	flag.StringVar(&port, "port", ":8080", "Default is :8080")
+}
+
+func main() {
+
 	flag.Parse()
 
-	http.HandleFunc("/", controller.Home)
-	http.HandleFunc("/callback", controller.Authorize)
+	http.HandleFunc("/", server.Home)
+	http.HandleFunc("/callback", server.Authorize)
 
 	var client *http.Client
 	go func() {

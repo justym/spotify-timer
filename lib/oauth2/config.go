@@ -24,9 +24,9 @@ var (
 )
 
 const (
-	spotifyID   = ""
-	spotifyKey  = ""
-	redirectURI = ""
+	spotifyID   = "608c6b65acf844ec8951b15c2b3a5e47"
+	spotifyKey  = "2b173db76387433b8e4b384e15050134"
+	redirectURI = "http://localhost:8080/callback"
 )
 
 //GetToken get token from spotify

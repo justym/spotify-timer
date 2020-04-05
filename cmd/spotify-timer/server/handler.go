@@ -1,4 +1,4 @@
-package controller
+package server
 
 import (
 	"context"
@@ -7,7 +7,7 @@ import (
 	"net/http"
 	"os"
 
-	o "github.com/justym/spotify-timer/oauth2"
+	o "github.com/justym/spotify-timer/lib/oauth2"
 )
 
 //Authorize is http handler for Spotify Authentication
