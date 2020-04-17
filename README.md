@@ -2,10 +2,10 @@
 Dead simply sleep timer for spotify
 
 # What is this 
-As this title, this app is alarm for spotify
+As this title, this app is sleep timer for spotify
 
 # Why 
-I just wanted to controll spotify playback from terminal
+I just wanted to use sleep timer from cli
 
 # Setup 
 At first, please go to [here](https://developer.spotify.com/dashboard/) to create Client ID and Client Secret 
