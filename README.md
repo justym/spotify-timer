@@ -20,7 +20,7 @@ go build
 ```
 
 # Finally
-Welcome to pull request. 
+Pull Request welcome :dizzy:
 
 
 
