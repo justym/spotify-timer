@@ -22,6 +22,9 @@ go build
 ./spotify-timer [minutes]
 ```
 
+# Finally
+Welcome to pull request. 
+
 
 
 
