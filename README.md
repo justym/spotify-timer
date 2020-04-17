@@ -5,7 +5,7 @@
 As this title, this app is alarm for spotify
 
 ## Why 
-I just wanted to controll spotify playback from cli
+I just wanted to controll spotify playback from terminal
 
 ## Setup
 ```
