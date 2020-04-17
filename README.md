@@ -8,9 +8,9 @@ As this title, this app is sleep timer for spotify
 I just wanted to use sleep timer from cli
 
 # Setup 
-At first, please go to [here](https://developer.spotify.com/dashboard/) to create Client ID and Client Secret 
-After that, please set the values into ``` .env ``` file
-
+1. Please go to [here](https://developer.spotify.com/dashboard/) to create Client ID and Client Secret 
+2. Please set the values into ``` .env ``` file
+3. Please run the commands below
 ```
 go get github.com/justym/spotify-timer
 cd $GOPATH/src/github.com/justym/spotify-timer
