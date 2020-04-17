@@ -1,9 +1,6 @@
 # spotify-timer
 Dead simply sleep timer for spotify
 
-# What is this 
-As this title, this app is sleep timer for spotify
-
 # Why 
 I just wanted to use sleep timer from cli
 
