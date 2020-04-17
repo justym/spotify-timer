@@ -1,19 +1,19 @@
 # spotify-timer
+Dead simply sleep timer for spotify
 
-
-## What is this 
+# What is this 
 As this title, this app is alarm for spotify
 
-## Why 
+# Why 
 I just wanted to controll spotify playback from terminal
 
-## Setup
+# Setup
 ```
 go get github.com/justym/spotify-timer
 cd $GOPATH/src/github.com/justym/spotify-timer
 go build
 ```
-## Usage
+# Usage
 ```
 ./spotify-timer [minutes]
 ```
