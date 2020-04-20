@@ -1,5 +1,5 @@
 # spotify-timer
-Dead simply sleep timer for spotify
+Dead simple sleep timer for spotify
 
 # Why 
 I just wanted to use sleep timer from cli
