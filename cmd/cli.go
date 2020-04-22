@@ -12,11 +12,13 @@ import (
 var rootCmd = &cobra.Command{
 	Use:   "spotify-timer [minutes]",
 	Short: "spotify-timer is sleep timer for spotify",
-	Args:  cobra.MaximumNArgs(1),
 	Run:   pause,
 }
 
 func pause(cmd *cobra.Command, args []string) {
+	if len(args) == 0 {
+		log.Fatal("Please input [minutes]")
+	}
 	stopTime, err := util.AtoTime(args[0])
 	if err != nil || stopTime == -1 {
 		log.Fatal(err, stopTime)
