@@ -17,7 +17,7 @@ var rootCmd = &cobra.Command{
 }
 
 func pause(cmd *cobra.Command, args []string) {
-	stopTime, err := util.AtoTime(args[1])
+	stopTime, err := util.AtoTime(args[0])
 	if err != nil || stopTime == -1 {
 		log.Fatal(err, stopTime)
 	}

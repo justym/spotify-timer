@@ -13,7 +13,8 @@ func Pause(client *http.Client, d time.Duration) error {
 	if err != nil {
 		return err
 	}
-	time.Sleep(d)
+	timer := time.NewTimer(d)
+	<-timer.C
 	resp, err := client.Do(req)
 	if err != nil {
 		return err
