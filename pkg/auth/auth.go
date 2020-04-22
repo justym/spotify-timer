@@ -1,16 +1,20 @@
-package main
+package auth
 
 import (
 	"log"
 	"os"
 
+	"github.com/justym/spotify-timer/pkg/config"
 	a2ns "github.com/nmrshll/oauth2-noserver"
-	"golang.org/x/oauth2"
 )
 
 var authorizedClient *a2ns.AuthorizedClient
 
-func NewClinet(conf *oauth2.Config) *a2ns.AuthorizedClient {
+func NewClinet() *a2ns.AuthorizedClient {
+	conf := config.NewConfig()
+	if conf == nil {
+		log.Fatal("config is nil")
+	}
 	if authorizedClient == nil {
 		authorizedClient, err := a2ns.AuthenticateUser(conf)
 		if err != nil {
