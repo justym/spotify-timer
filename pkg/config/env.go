@@ -1,10 +1,7 @@
-package main
+package config
 
 import (
-	"log"
 	"os"
-
-	"github.com/joho/godotenv"
 )
 
 var (
@@ -14,13 +11,8 @@ var (
 
 //LoadEnv set values from .env file
 func LoadEnv() {
-	err := godotenv.Load(".env")
-	if err != nil {
-		log.Println(err)
-		os.Exit(1)
-	}
-	clientID = os.Getenv("ID")
-	clientSecret = os.Getenv("KEY")
+	clientID = os.Getenv("SPOTIFY_TIMER_ID")
+	clientSecret = os.Getenv("SPOTIFY_TIMER_KEY")
 }
 
 //GetValues returns client id, client secret key
