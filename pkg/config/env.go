@@ -1,6 +1,7 @@
 package config
 
 import (
+	"fmt"
 	"os"
 )
 
@@ -9,13 +10,16 @@ var (
 	clientSecret string
 )
 
-//LoadEnv set values from .env file
-func LoadEnv() {
+func init() {
 	clientID = os.Getenv("SPOTIFY_TIMER_ID")
 	clientSecret = os.Getenv("SPOTIFY_TIMER_KEY")
 }
 
 //GetValues returns client id, client secret key
-func GetValues() (string, string) {
-	return clientID, clientSecret
+func GetValues() (string, string, error) {
+	if clientID == "" || clientSecret == "" {
+		err := fmt.Errorf("SPOTIFY_TIMER_ID or SPOTIFY_TIMER_KEY is empty")
+		return clientID, clientSecret, err
+	}
+	return clientID, clientSecret, nil
 }
