@@ -1,9 +1,11 @@
 package cmd
 
 import (
+	"fmt"
 	"log"
 	"time"
 
+	"github.com/fatih/color"
 	"github.com/justym/spotify-timer/pkg/auth"
 	"github.com/justym/spotify-timer/pkg/player"
 	"github.com/justym/spotify-timer/pkg/util"
@@ -26,15 +28,19 @@ func init() {
 }
 
 func pause(_ *cobra.Command, args []string) {
-	if len(args) == 1 {
-		minutes, err := util.AtoTime(args[0])
-		if err != nil || minutes == -1 {
-			log.Fatal(err, minutes)
+	var stopTime = minutes
+
+	if len(args) > 0 {
+		t, err := util.AtoTime(args[0])
+		if err != nil || t == -1 {
+			log.Fatal(err, t)
 		}
+		stopTime = t
 	}
+	fmt.Println(color.YellowString("[TIME]: %s", stopTime.String()))
 
 	authrizedClient := auth.NewClinet()
-	if err := player.Pause(authrizedClient.Client, minutes); err != nil {
+	if err := player.Pause(authrizedClient.Client, stopTime); err != nil {
 		log.Fatal(err)
 	}
 }
