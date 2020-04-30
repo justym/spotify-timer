@@ -6,7 +6,7 @@ I just wanted to use sleep timer from cli
 
 # Setup 
 1. Please go to [here](https://developer.spotify.com/dashboard/) to create Client ID and Client Secret 
-2. Please set redirect uri to http://127.0.0.1:14565/oauth/callback
+2. Please set redirect uri to http://127.0.0.1:14565/oauth/callback in your APP
 3. Please set these values like below.
 ```
 export SPOTIFY_TIMER_ID=your_client_id
