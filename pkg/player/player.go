@@ -1,7 +1,7 @@
 package player
 
 import (
-	"errors"
+	"fmt"
 	"net/http"
 	"time"
 )
@@ -13,14 +13,17 @@ func Pause(client *http.Client, d time.Duration) error {
 	if err != nil {
 		return err
 	}
+
 	timer := time.NewTimer(d)
 	<-timer.C
+
 	resp, err := client.Do(req)
 	if err != nil {
 		return err
 	}
-	if resp.StatusCode != 204 {
-		return errors.New("Status Code Error: response status code is " + string(resp.StatusCode))
+	if resp.StatusCode != http.StatusNoContent {
+		return fmt.Errorf("Status Code Error: response status code is %d", resp.StatusCode)
 	}
+
 	return nil
 }
