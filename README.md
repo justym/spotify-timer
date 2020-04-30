@@ -24,6 +24,11 @@ go build
 ./spotify-timer [minutes]
 ```
 
+# Built with
+- github.com/spf13/cobra
+- github.com/nmrshll/oauth2-noserver
+- github.com/fatih/color
+
 # Welcome
 - Pull Requests
 - Issues
