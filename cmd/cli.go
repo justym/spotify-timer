@@ -2,31 +2,46 @@ package cmd
 
 import (
 	"log"
+	"time"
 
 	"github.com/justym/spotify-timer/pkg/auth"
 	"github.com/justym/spotify-timer/pkg/player"
-	"github.com/justym/spotify-timer/pkg/util"
 	"github.com/spf13/cobra"
 )
 
-var rootCmd = &cobra.Command{
-	Use:   "spotify-timer [minutes]",
-	Short: "spotify-timer is sleep timer for spotify",
-	Run:   pause,
+var (
+	rootCmd = &cobra.Command{
+		Use:   "spotify-timer",
+		Short: "spotify-timer is sleep timer for spotify",
+		Run:   run,
+	}
+
+	pauseDuration time.Duration
+)
+
+func init() {
+	rootCmd.PersistentFlags().DurationVarP(
+		&pauseDuration, "duration", "d", pauseDuration, "pause duration")
+	rootCmd.MarkPersistentFlagRequired("duration")
 }
 
-func pause(cmd *cobra.Command, args []string) {
-	if len(args) == 0 {
-		log.Fatal("Please input [minutes]")
-	}
-	stopTime, err := util.AtoTime(args[0])
-	if err != nil || stopTime == -1 {
-		log.Fatal(err, stopTime)
-	}
-	authrizedClient := auth.NewClinet()
-	if err := player.Pause(authrizedClient.Client, stopTime); err != nil {
+func run(cmd *cobra.Command, args []string) {
+	if err := pause(); err != nil {
 		log.Fatal(err)
 	}
+}
+
+func pause() error {
+	authrizedClient, err := auth.NewClient()
+	if err != nil {
+		return err
+	}
+
+	if err := player.Pause(authrizedClient.Client, pauseDuration); err != nil {
+		return err
+	}
+
+	return nil
 }
 
 func Execute() {

@@ -5,21 +5,18 @@ import (
 	"golang.org/x/oauth2/spotify"
 )
 
-var config *oauth2.Config
-
 const scopeUMPS = "user-modify-playback-state"
 
-func NewConfig() *oauth2.Config {
-	LoadEnv()
-	id, key := GetValues()
-	if config == nil {
-		config = &oauth2.Config{
-			ClientID:     id,
-			ClientSecret: key,
-			Endpoint:     spotify.Endpoint,
-			Scopes:       []string{scopeUMPS},
-		}
+func NewConfig() (*oauth2.Config, error) {
+	envs, err := loadEnv()
+	if err != nil {
+		return nil, err
 	}
 
-	return config
+	return &oauth2.Config{
+		ClientID:     envs.clientID,
+		ClientSecret: envs.clientKey,
+		Endpoint:     spotify.Endpoint,
+		Scopes:       []string{scopeUMPS},
+	}, nil
 }

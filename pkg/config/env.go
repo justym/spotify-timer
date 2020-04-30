@@ -1,21 +1,26 @@
 package config
 
 import (
+	"errors"
 	"os"
 )
 
-var (
-	clientID     string
-	clientSecret string
-)
-
-//LoadEnv set values from .env file
-func LoadEnv() {
-	clientID = os.Getenv("SPOTIFY_TIMER_ID")
-	clientSecret = os.Getenv("SPOTIFY_TIMER_KEY")
+type envs struct {
+	clientID  string
+	clientKey string
 }
 
-//GetValues returns client id, client secret key
-func GetValues() (string, string) {
-	return clientID, clientSecret
+// loadEnv set & return values from .env file
+func loadEnv() (*envs, error) {
+	clientID := os.Getenv("SPOTIFY_TIMER_ID")
+	clientKey := os.Getenv("SPOTIFY_TIMER_KEY")
+
+	if clientID == "" || clientKey == "" {
+		return nil, errors.New("SPOTIFY_TIMER_ID or SPOTIFY_TIMER_KEY is empty")
+	}
+
+	return &envs{
+		clientID:  clientID,
+		clientKey: clientKey,
+	}, nil
 }
