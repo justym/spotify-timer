@@ -10,18 +10,22 @@ I just wanted to use sleep timer from cli
 3. Please set these values like below.
 ```
 export SPOTIFY_TIMER_ID=your_client_id
-export SPOTIFY_TIMER_KEY=your_client_ke
+export SPOTIFY_TIMER_KEY=your_client_key
 ```
 4. Please run the commands below
-```
+``` sh
 go get github.com/justym/spotify-timer
 cd $GOPATH/src/github.com/justym/spotify-timer
 go build
 ```
 
 # Usage
-```
+```sh
+./spotify-timer -h #help
+
 ./spotify-timer [minutes]
+./spotify-timer -m=1m (a minute)
+./spotify-timer (default 10m)
 ```
 
 # Built with
