@@ -25,8 +25,8 @@ jobs:
     - name: Get dependencies
       run: go get -v -t -d ./...
 
-    - name: Build
-      run: go build -v .
-
     - name: Test
       run: go test -v .
+      
+    - name: Build
+      run: go build -v .
